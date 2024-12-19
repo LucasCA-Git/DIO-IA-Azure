@@ -98,4 +98,11 @@ Neste exercício, usei a funcionalidade de aprendizado de máquina automatizado 
 }
 ```
 
+- Cliquei em Testar e vi o número previsto de aluguéis como resultado:
+```json
+[352.3564674945718]
+```
+## 7. Limpeza de recursos
+Após concluir os testes, excluí o endpoint para evitar cobranças adicionais. Em Azure Machine Learning Studio, fui até Endpoints, selecionei o endpoint predict-rentals e cliquei em Excluir.
+Para excluir o workspace e os recursos associados, no portal do Azure, fui até Grupos de Recursos, selecionei o grupo de recursos do meu workspace e cliquei em Excluir.
 
