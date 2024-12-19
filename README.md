@@ -6,7 +6,50 @@ projeto para as atividades do bootcamp Microsoft - Fundamentos de IA
 
 Neste exercício, usei a funcionalidade de aprendizado de máquina automatizado do **Azure Machine Learning** para treinar e avaliar um modelo de machine learning. Após isso, fiz a implantação e realizei testes com o modelo treinado.
 
-## 1. Criar um workspace do Azure Machine Learning
+# Serviços de IA do Azure - Content Safety Studio
+
+Os serviços de IA do Azure oferecem APIs e modelos para criar aplicações de IA. Neste exercício, mostro como usar o **Azure AI Content Safety** para moderar conteúdo de texto e imagens.
+
+---
+
+### Passos Realizados:
+
+1. **Acessar o Content Safety Studio**
+   - A primeira etapa foi fazer o login no **Content Safety Studio** usando minha conta do Azure.
+   - No menu superior, explorei os outros estúdios de IA do Azure, mas continuei com o Content Safety Studio.
+
+2. **Criar um Recurso**
+   - No Content Safety Studio, fui até as **Configurações** e cliquei na aba **Recurso**.
+   - Depois selecionei **Criar um novo recurso**, que me direcionou para o **Azure Portal**.
+   - No portal, configurei o recurso com as seguintes opções:
+     - **Assinatura**: Minha assinatura do Azure.
+     - **Grupo de recursos**: Selecionei ou criei um novo grupo de recursos.
+     - **Região**: Escolhi "East US 2" (ou uma região disponível).
+     - **Nome**: Dei um nome único para o recurso.
+     - **Plano de preços**: Selecionei o plano **F0 (Grátis)**.
+   - Revisei as configurações e criei o recurso.
+
+3. **Associar o Recurso**
+   - Após a criação, voltei ao Content Safety Studio.
+   - Nas **Configurações**, verifiquei que o novo recurso estava listado.
+   - No **Azure Portal**, atribuí a função **Cognitive Services User** a mim mesmo para garantir que tivesse permissões para usar o recurso.
+
+4. **Moderar Conteúdo de Texto**
+   - No **Content Safety Studio**, fui até a seção **Realizar testes de moderação** e selecionei **Experimente**.
+   - Testei a moderação de texto com amostras como "Safe Content" e "Violent Content", clicando em **Executar teste**.
+   - Após a execução, inspecionei os resultados que indicaram o nível de severidade do conteúdo (de **seguro** a **alto**).
+
+5. **Verificar Chaves e Endpoints**
+   - Para utilizar o recurso em uma aplicação, verifiquei as **chaves e o endpoint** tanto no Content Safety Studio quanto no **Azure Portal**.
+   - No portal, encontrei as informações em **Gerenciamento de Recursos** > **Chaves e Endpoints**.
+
+6. **Excluir o Recurso**
+   - Para reduzir custos, decidi excluir o recurso após o uso.
+   - No **Azure Portal**, na página de visão geral do recurso, cliquei em **Excluir**.
+
+---
+
+# 1. Criar um workspace do Azure Machine Learning
 
 1. Acessei o portal do Azure [https://portal.azure.com](https://portal.azure.com) e me loguei com minhas credenciais da Microsoft.
 2. No menu do portal, selecionei **+ Criar um recurso**, busquei por "Machine Learning" e criei um novo recurso de **Azure Machine Learning** com as seguintes configurações:
