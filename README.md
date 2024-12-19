@@ -14,11 +14,11 @@ Os serviços de IA do Azure oferecem APIs e modelos para criar aplicações de I
 
 ### Passos Realizados:
 
-1. **Acessar o Content Safety Studio**
+# 1. **Acessar o Content Safety Studio**
    - A primeira etapa foi fazer o login no **Content Safety Studio** usando minha conta do Azure.
    - No menu superior, explorei os outros estúdios de IA do Azure, mas continuei com o Content Safety Studio.
 
-2. **Criar um Recurso**
+# 2. **Criar um Recurso**
    - No Content Safety Studio, fui até as **Configurações** e cliquei na aba **Recurso**.
    - Depois selecionei **Criar um novo recurso**, que me direcionou para o **Azure Portal**.
    - No portal, configurei o recurso com as seguintes opções:
@@ -29,21 +29,21 @@ Os serviços de IA do Azure oferecem APIs e modelos para criar aplicações de I
      - **Plano de preços**: Selecionei o plano **F0 (Grátis)**.
    - Revisei as configurações e criei o recurso.
 
-3. **Associar o Recurso**
+# 3. **Associar o Recurso**
    - Após a criação, voltei ao Content Safety Studio.
    - Nas **Configurações**, verifiquei que o novo recurso estava listado.
    - No **Azure Portal**, atribuí a função **Cognitive Services User** a mim mesmo para garantir que tivesse permissões para usar o recurso.
 
-4. **Moderar Conteúdo de Texto**
+# 4. **Moderar Conteúdo de Texto**
    - No **Content Safety Studio**, fui até a seção **Realizar testes de moderação** e selecionei **Experimente**.
    - Testei a moderação de texto com amostras como "Safe Content" e "Violent Content", clicando em **Executar teste**.
    - Após a execução, inspecionei os resultados que indicaram o nível de severidade do conteúdo (de **seguro** a **alto**).
 
-5. **Verificar Chaves e Endpoints**
+# 5. **Verificar Chaves e Endpoints**
    - Para utilizar o recurso em uma aplicação, verifiquei as **chaves e o endpoint** tanto no Content Safety Studio quanto no **Azure Portal**.
    - No portal, encontrei as informações em **Gerenciamento de Recursos** > **Chaves e Endpoints**.
 
-6. **Excluir o Recurso**
+# 6. **Excluir o Recurso**
    - Para reduzir custos, decidi excluir o recurso após o uso.
    - No **Azure Portal**, na página de visão geral do recurso, cliquei em **Excluir**.
 
@@ -148,4 +148,66 @@ Os serviços de IA do Azure oferecem APIs e modelos para criar aplicações de I
 ## 7. Limpeza de recursos
 Após concluir os testes, excluí o endpoint para evitar cobranças adicionais. Em Azure Machine Learning Studio, fui até Endpoints, selecionei o endpoint predict-rentals e cliquei em Excluir.
 Para excluir o workspace e os recursos associados, no portal do Azure, fui até Grupos de Recursos, selecionei o grupo de recursos do meu workspace e cliquei em Excluir.
+
+## Criando um Recurso de Serviços de IA do Azure
+
+Primeiro, eu precisei criar um recurso do **Azure AI Services** na minha assinatura do Azure para começar a usar os serviços de inteligência artificial.
+
+### Passos que segui:
+1. Acessei o [portal do Azure](https://portal.azure.com) e fiz login com minha conta Microsoft.
+2. Cliquei no botão **＋Criar um recurso** e procurei por **Azure AI services**.
+3. Selecionei a opção **Criar um plano de serviços Azure AI**.
+4. Completei os campos de configuração com as seguintes informações:
+   - **Assinatura**: Escolhi minha assinatura do Azure.
+   - **Grupo de Recursos**: Criei um novo grupo de recursos com um nome único.
+   - **Região**: Selecionei a região "East US 2", que estava mais próxima de mim.
+   - **Nome**: Dei um nome único ao recurso.
+   - **Camada de Preço**: Optei pela camada **Standard S0**.
+   - Aceitei os termos e condições, marcando a caixa de confirmação.
+5. Após revisar tudo, cliquei em **Revisar + Criar** e depois em **Criar**. Esperei a implantação ser concluída.
+
+---
+
+## Conectando o Recurso ao Vision Studio
+
+Com o recurso criado, precisei conectá-lo ao **Vision Studio**, uma plataforma visual baseada em UI que facilita o uso de várias funcionalidades de IA, sem precisar escrever código.
+
+### Passos que segui:
+1. Em uma nova aba do navegador, acessei o [Vision Studio](https://portal.vision.cognitive.azure.com) e fiz login com a mesma conta usada para criar o recurso.
+2. Na página inicial do Vision Studio, cliquei em **Ver todos os recursos** sob a seção **Introdução ao Vision**.
+3. Na lista de recursos, passei o cursor sobre o recurso recém-criado e marquei a caixa ao lado dele. Depois, selecionei **Selecionar como recurso padrão**.
+4. Fechei a página de configurações clicando no "x" no canto superior direito da tela.
+
+---
+
+# Detectando Rostos no Vision Studio
+
+Agora, com tudo configurado, fui para a parte de **detecção de rostos** no Vision Studio. Isso me permitiu testar a detecção de rostos em algumas imagens de exemplo fornecidas pelo Azure.
+
+## Passos que segui:
+- No **Vision Studio**, cliquei na aba **Face** e selecionei a opção **Detect Faces in an image**.
+- Em **Try It Out**, li a política de uso do serviço e marquei a caixa de aceitação.
+- Testei as imagens de exemplo fornecidas no portal e observei os dados da detecção de rostos que foram retornados.
+
+## Testando com Minhas Próprias Imagens:
+Para explorar mais, decidi testar com algumas imagens minhas. Fui até o link [detect-faces.zip](https://aka.ms/mslearn-detect-faces) e baixei o arquivo.
+
+1. Extraí o conteúdo do arquivo e localizei as seguintes imagens:
+   - **store-camera-1.jpg**: Uma imagem de pessoas em uma loja.
+   - **store-camera-2.jpg**: Outra imagem com mais pessoas na loja.
+   - **store-camera-3.jpg**: Uma imagem de pessoas em uma loja, mas com uma planta parcialmente cobrindo o rosto de uma pessoa.
+   
+2. Fiz o upload de cada uma dessas imagens no Vision Studio e revisei os detalhes da detecção de rostos retornados. Quando fiz o upload da **store-camera-3.jpg**, percebi que o Azure AI Face não detectou o rosto da pessoa que estava parcialmente obstruída pela planta, o que mostrou como o serviço lida com faces obstruídas.
+
+---
+
+# Limpeza de Recursos
+
+Depois de realizar os testes, fiz a limpeza dos recursos para evitar custos desnecessários. Isso é sempre importante quando você está concluindo seus exercícios e não precisa mais dos recursos criados.
+
+## Passos que segui:
+- No [portal do Azure](https://portal.azure.com), acessei o grupo de recursos onde o recurso foi criado.
+- Selecionei o recurso criado e cliquei em **Excluir**. Depois, confirmei a exclusão clicando em **Sim**.
+
+---
 
