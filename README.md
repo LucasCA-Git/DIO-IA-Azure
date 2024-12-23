@@ -201,6 +201,124 @@ Para explorar mais, decidi testar com algumas imagens minhas. Fui até o link [d
 
 ---
 
+# Azure AI Search - Implementação e Utilização
+
+O **Azure AI Search** é um serviço poderoso que permite a indexação, consulta e análise de grandes volumes de dados, com suporte a consultas cognitivas para extrair informações significativas de documentos e outros tipos de conteúdo.
+
+### Passos Realizados:
+
+## 1. **Criar um Recurso de Pesquisa Cognitiva do Azure**
+   - Acesse o portal do Azure em [https://portal.azure.com](https://portal.azure.com).
+   - No menu, selecione **+ Criar um recurso** e busque por **Azure Cognitive Search**.
+   - Configure as opções do serviço:
+     - **Assinatura**: Selecione a sua assinatura do Azure.
+     - **Grupo de Recursos**: Crie ou selecione um grupo de recursos existente.
+     - **Nome**: Escolha um nome único para o serviço de busca.
+     - **Região**: Selecione uma região próxima de você (por exemplo, **East US**).
+     - **Plano de Preço**: Escolha o plano adequado para o seu uso (por exemplo, **Basic** ou **Standard**).
+
+   - Após revisar as configurações, clique em **Criar**. Aguarde até a criação ser concluída.
+
+## 2. **Configurar o Recurso de Pesquisa Cognitiva**
+   - Após a criação, acesse o **Azure Cognitive Search** através do painel de **Visão Geral**.
+   - Copie a **Chave de API** e o **Endpoint**, necessários para a autenticação no serviço.
+
+## 3. **Criar um Índice de Pesquisa**
+   - Acesse o **Azure Portal** e selecione **Cognitive Search**.
+   - No painel esquerdo, clique em **Índices** e depois em **+ Adicionar índice**.
+   - Defina o nome do índice e os campos que ele deve indexar (por exemplo, se você estiver indexando documentos, você pode definir campos como **id**, **nome**, **conteúdo**).
+   - Escolha os tipos de dados apropriados para cada campo (string, booleano, numérico, etc.).
+
+### Exemplo de definição de índice:
+
+```json
+{
+  "name": "documentos-index",
+  "fields": [
+    { "name": "id", "type": "Edm.String", "key": true },
+    { "name": "nome", "type": "Edm.String" },
+    { "name": "conteudo", "type": "Edm.String", "searchable": true },
+    { "name": "data_criacao", "type": "Edm.DateTimeOffset" }
+  ]
+}
+```
+
+markdown
+Copiar código
+# Azure AI Search - Implementação e Utilização
+
+O **Azure AI Search** é um serviço poderoso que permite a indexação, consulta e análise de grandes volumes de dados, com suporte a consultas cognitivas para extrair informações significativas de documentos e outros tipos de conteúdo.
+
+### Passos Realizados:
+
+## 1. **Criar um Recurso de Pesquisa Cognitiva do Azure**
+   - Acesse o portal do Azure em [https://portal.azure.com](https://portal.azure.com).
+   - No menu, selecione **+ Criar um recurso** e busque por **Azure Cognitive Search**.
+   - Configure as opções do serviço:
+     - **Assinatura**: Selecione a sua assinatura do Azure.
+     - **Grupo de Recursos**: Crie ou selecione um grupo de recursos existente.
+     - **Nome**: Escolha um nome único para o serviço de busca.
+     - **Região**: Selecione uma região próxima de você (por exemplo, **East US**).
+     - **Plano de Preço**: Escolha o plano adequado para o seu uso (por exemplo, **Basic** ou **Standard**).
+
+   - Após revisar as configurações, clique em **Criar**. Aguarde até a criação ser concluída.
+
+## 2. **Configurar o Recurso de Pesquisa Cognitiva**
+   - Após a criação, acesse o **Azure Cognitive Search** através do painel de **Visão Geral**.
+   - Copie a **Chave de API** e o **Endpoint**, necessários para a autenticação no serviço.
+
+## 3. **Criar um Índice de Pesquisa**
+   - Acesse o **Azure Portal** e selecione **Cognitive Search**.
+   - No painel esquerdo, clique em **Índices** e depois em **+ Adicionar índice**.
+   - Defina o nome do índice e os campos que ele deve indexar (por exemplo, se você estiver indexando documentos, você pode definir campos como **id**, **nome**, **conteúdo**).
+   - Escolha os tipos de dados apropriados para cada campo (string, booleano, numérico, etc.).
+
+### Exemplo de definição de índice:
+
+```json
+{
+  "name": "documentos-index",
+  "fields": [
+    { "name": "id", "type": "Edm.String", "key": true },
+    { "name": "nome", "type": "Edm.String" },
+    { "name": "conteudo", "type": "Edm.String", "searchable": true },
+    { "name": "data_criacao", "type": "Edm.DateTimeOffset" }
+  ]
+}
+```
+4. Carregar Dados no Índice
+Você pode carregar dados para o índice usando o Azure SDK, APIs REST ou usando o Azure Data Factory.
+Utilize o Azure Portal ou a API para adicionar documentos ao índice, como mostrado no exemplo a seguir:
+Exemplo de adicionar documentos:
+
+```json
+
+{
+  "value": [
+    {
+      "@search.action": "upload",
+      "id": "1",
+      "nome": "Documento Exemplo",
+      "conteudo": "Este é um exemplo de conteúdo de documento.",
+      "data_criacao": "2024-12-23T12:00:00Z"
+    }
+  ]
+}
+```
+1. Consultar Dados no Índice
+Após os dados serem carregados, você pode realizar consultas usando a API de pesquisa.
+A consulta pode incluir filtragem, ordenação e extração de informações com base em palavras-chave.
+Exemplo de consulta de pesquisa:
+```json
+{
+  "queryType": "full",
+  "search": "exemplo",
+  "select": "id, nome, conteudo",
+  "top": 10
+}
+```
+A consulta acima retorna os 10 primeiros documentos que correspondem à palavra "exemplo" nos campos indexados.
+
 # Limpeza de Recursos
 
 Depois de realizar os testes, fiz a limpeza dos recursos para evitar custos desnecessários. Isso é sempre importante quando você está concluindo seus exercícios e não precisa mais dos recursos criados.
